@@ -1,0 +1,1 @@
+# terraform-argocd-uptime-kuma
