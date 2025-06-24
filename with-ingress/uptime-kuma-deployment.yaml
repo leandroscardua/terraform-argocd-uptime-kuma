@@ -24,6 +24,22 @@ spec:
           limits:
             cpu: "750m"
             memory: "750Mi"
+        livenessProbe:
+          httpGet:
+            path: / # or a specific health check endpoint if available
+            port: 3001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: / # or a specific readiness check endpoint if available
+            port: 3001
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
         volumeMounts:
         - mountPath: /app/data
           name: uptime-kuma-data
